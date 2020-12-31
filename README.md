@@ -1,25 +1,23 @@
 # Unicorn PE
 Unicorn PE is an [unicorn](https://github.com/unicorn-engine/unicorn) based instrumentation project/framework designed to emulate code execution for windows PE files, especially packed ones.
 
-## Limitation 
-For now, only x64 PE files are supported.
+## Feature
+Dump PE image from emu-memory into file, fix import table, especially packed ones.
 
-Some packed user-mode program might be executed incorrectly, since the environment is not fully emulated. (PEB TEB or some other stuffs)
+Partial support for exception. (only #DB and #BP)
 
-I would be grateful if you figure out how to emulate them correctly.
+Show disasm for all instructions that is being executed.
 
-Partial support for exception. (only single step)
+Update BlackBone to latest ver (2020.4.5).
 
-## TODO 
-Feature: Exception, SEH / VEH  --- 90%
+## TODO
 
 Feature: x86 (low priority) -- 0%
 
 ## Build
-Visual Studio 2017 are required.
-Note that you have to install VC++/ATL and WindowsSDK8.1 for VS2017 to be able to compile BlackBone.
+Visual Studio 2019 are required.
 
-Open unicorn_pe.sln with Visual Studio 2017
+Open unicorn_pe.sln with Visual Studio 2019
 
 Build project "unicorn_pe" as x64/Release or x64/Debug. (No x86 support for now)
 
@@ -44,6 +42,9 @@ unicorn_pe (filename or filepath) [-k for kernel mode driver emulation] [-disasm
 
 ### vmprotect goes back to original entry point
 ![4](https://github.com/hzqst/unicorn_pe/raw/master/img/img4.png)
+
+### vmprotect packed DLL, full user-mode emulation.
+![4](https://github.com/hzqst/unicorn_pe/raw/master/img/img5.png)
 
 ## License
 This software is released under the MIT License, see LICENSE.
